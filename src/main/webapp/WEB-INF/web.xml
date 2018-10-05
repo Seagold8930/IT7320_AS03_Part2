@@ -8,7 +8,7 @@
 		<servlet-name>AttemptLogin</servlet-name>
 		<display-name>AttemptLogin</display-name>
 		<description></description>
-		<servlet-class>gui.AttemptLogin</servlet-class>
+		<servlet-class>loginClasses.AttemptLogin</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AttemptLogin</servlet-name>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Error</title>
 </head>
 <body>
 <h2>U Shall Not Pass!</h2><h3>Mebbe try a valid username and password? ¯\_(ツ)_/¯</h3>
