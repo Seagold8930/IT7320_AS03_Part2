@@ -14,7 +14,26 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-api</artifactId>
+	    <version>5.3.1</version>
+	    <scope>test</scope>
+	</dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.0.1</version>
+        <scope>provided</scope>
+	</dependency>
   </dependencies>
+  <repositories>
+    <repository>
+      <id>forplay-legacy</id>
+      <url>http://forplay.googlecode.com/svn/mavenrepo</url>
+    </repository>
+  </repositories>
   <build>
     <finalName>IT7320_AS03_Part2</finalName>
   </build>

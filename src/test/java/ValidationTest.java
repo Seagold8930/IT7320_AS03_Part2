@@ -1,15 +1,12 @@
-package validation;
+import static org.junit.Assert.*;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import loginClasses.Validation;
 
-class ValidationTest {
+public class ValidationTest {
 	/*
 	 * Rules:
 	 * 1 - Both usernames and passwords must be at least 8 characters long.
@@ -31,18 +28,18 @@ class ValidationTest {
 	
 	Validation obj;
 	
-	@BeforeEach
-	void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		obj = new Validation();
 	}
 
-	@AfterEach
-	void tearDown() throws Exception {
+	@After
+	public void tearDown() throws Exception {
 		obj = null;
 	}
 
 	@Test
-	void test() {
+	public void testInvalidUsernames() {
 		for( int i = 0; i < invalidUsernames.length; i++ ) {
 			assertFalse( obj.validateInput( invalidUsernames[ i ], validPasswords[ 0 ] ) );
 		}
