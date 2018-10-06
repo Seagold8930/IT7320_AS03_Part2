@@ -1,4 +1,4 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,15 +16,15 @@ public class ValidationTest {
 	 * 5 - Valid password characters: same as above with the exclusion of Commercial ats (@) 
 	 */
 	
-	String[] validUsernames = { "IT7320_Dev&Testing-of.Softw@re!", "0123456789", "DevAndTestingOfSoftware" };
+	String[] validUsernames = { "IT7320_Dev&Testing-of.Softw@re!", "0123456789", "DevAndTestingOfSoftware",  "_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789" };
 	
-	//Index 1st: Too short, 2nd/3rd: Begins with period or dash,           4th to 9th - Possesses characters not listed	
-	String[] invalidUsernames = { "DanMota", ".Dan.Mota88", "-Dan.Mota88", "\\Dan.Mota88", "/Dan.Mota88", " Dan Mota 88", " Dan.Mota88", "Dan%Mota%88", "Dan;Mota;88" };
+	//Index 1st: Too short, 2nd/3rd: Begins with period or dash,           4th to 9th - Possesses characters not listed	                                               10th - 201 characters long
+	String[] invalidUsernames = { "DanMota", ".Dan.Mota88", "-Dan.Mota88", "\\Dan.Mota88", "/Dan.Mota88", " Dan Mota 88", " Dan.Mota88", "Dan%Mota%88", "Dan;Mota;88", "_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_" };
 	
-	String[] validPasswords = { "IT7320_Dev&Testing-of.Software!", "0123456789", "DevAndTestingOfSoftware" };
+	String[] validPasswords = { "IT7320_Dev&Testing-of.Software!", "0123456789", "DevAndTestingOfSoftware", "_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_12345678" };
 	
-	//Index 1st: Too short, 2nd/3rd: Begins with period or dash,  4th to 9th - Possesses characters not listed
-	String[] invalidPasswords = { "1234", ".1234567", "-1234567", "P@ssword", "Pass\\word", "Pass/word", "Pass word", "Pass%word", "Pass;Word" };
+	//Index 1st: Too short, 2nd/3rd: Begins with period or dash,  4th to 9th - Possesses characters not listed									10th - 129 characters long
+	String[] invalidPasswords = { "1234", ".1234567", "-1234567", "P@ssword", "Pass\\word", "Pass/word", "Pass word", "Pass%word", "Pass;Word", "_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_12345678" };
 	
 	Validation obj;
 	
@@ -32,14 +32,14 @@ public class ValidationTest {
 	public void setUp() throws Exception {
 		obj = new Validation();
 	}
-
+	
 	@After
 	public void tearDown() throws Exception {
 		obj = null;
 	}
-
+	
 	@Test
-	public void testInvalidUsernames() {
+	public void test() {
 		for( int i = 0; i < invalidUsernames.length; i++ ) {
 			assertFalse( obj.validateInput( invalidUsernames[ i ], validPasswords[ 0 ] ) );
 		}
