@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +22,7 @@ public class ValidationTest {
 	//Index 1st: Too short, 2nd/3rd: Begins with period or dash,           4th to 9th - Possesses characters not listed	                                               10th - 201 characters long
 	String[] invalidUsernames = { "DanMota", ".Dan.Mota88", "-Dan.Mota88", "\\Dan.Mota88", "/Dan.Mota88", " Dan Mota 88", " Dan.Mota88", "Dan%Mota%88", "Dan;Mota;88", "_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_" };
 	
-	String[] validPasswords = { "IT7320_Dev&Testing-of.Software!", "0123456789", "DevAndTestingOfSoftware", "_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_12345678" };
+	String[] validPasswords = { "IT7320_Dev&Testing-of.Software!", "0123456789", "DevAndTestingOfSoftware", "_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_1234567" };
 	
 	//Index 1st: Too short, 2nd/3rd: Begins with period or dash,  4th to 9th - Possesses characters not listed									10th - 129 characters long
 	String[] invalidPasswords = { "1234", ".1234567", "-1234567", "P@ssword", "Pass\\word", "Pass/word", "Pass word", "Pass%word", "Pass;Word", "_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_12345678" };
@@ -39,10 +40,23 @@ public class ValidationTest {
 	}
 	
 	@Test
-	public void test() {
+	public void testValidInputs() {
+		for( int i = 0; i < validUsernames.length; i++ ) {
+			assertTrue( obj.validateInput( validUsernames[ i ], validPasswords[ i ] ) );
+		}
+	}
+	
+	@Test
+	public void testInvalidUsernames() {
 		for( int i = 0; i < invalidUsernames.length; i++ ) {
 			assertFalse( obj.validateInput( invalidUsernames[ i ], validPasswords[ 0 ] ) );
 		}
 	}
-
+	
+	@Test
+	public void testInvalidPasswords() {
+		for( int i = 0; i < invalidPasswords.length; i++ ) {
+			assertFalse( obj.validateInput( validUsernames[ 1 ], invalidPasswords[ i ] ) );
+		}
+	}
 }
