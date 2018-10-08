@@ -8,11 +8,12 @@ public class Validation {
 	private static final String PASS_PATTERN = "^[\\w!()?\\[\\]`~#$^&*+=]{1}+[\\w!()?\\[\\]`~#$^&*+=.-]+$";
 	
 	public boolean validateInput(String username, String password) {
-		if( username.length() >= MIN_LENGTH && username.length() <= USER_MAX &&
-			password.length() >= MIN_LENGTH && password.length() <= PASS_MAX ) {
-			if( username.matches( USER_PATTERN ) && password.matches( PASS_PATTERN ) )
-				return true;
+		if( username.length() >= MIN_LENGTH && username.length() <= USER_MAX && password.length() >= MIN_LENGTH &&
+			password.length() <= PASS_MAX  && username.matches( USER_PATTERN ) && password.matches( PASS_PATTERN ) ) {
+			
+			return true;
 		}
+
 		return false;
 	}
 

@@ -20,12 +20,16 @@ public class AttemptLogin extends HttpServlet implements Servlet {
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("user");
 		String password = request.getParameter("pass");
+		Validation obj = new Validation();
 		
-		response.sendRedirect("error.jsp");
+		if( obj.validateInput(username, password) && username.matches( "Dan_Mota88" ) && password.matches( "IT7320_Dev&Testing" ) ) {
+			response.sendRedirect( "success.jsp" );
+		} else {
+			response.sendRedirect( "error.jsp" );
+		}
 	}
 
 }
